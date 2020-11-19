@@ -10,4 +10,19 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def valid_user_hash_for_create
+     {
+       email: "notarealemail@reviewyourlearning.com",
+       password: "ilovereviewingmylearning2020",
+       password_confirmation: "ilovereviewingmylearning2020"
+     }
+  end
+  
+  def invalid_user_hash_for_create
+     {
+       email: "notarealemail@reviewyourlearning.com",
+       password: "ilovereviewingmylearning2020",
+       password_confirmation: "passwordandpasswordconfirmationdonotmatch"
+     }
+  end
 end
