@@ -25,6 +25,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         password: "testpassword",
         password_confirmation: "testpassword" } 
     assert_equal users(:ezraShimon).id, session[:user_id],
-      "Expected ezraShimon.id to equal session[:user_id]"
+      "Expected users(:ezraShimon).id to equal session[:user_id]"
   end
 end
