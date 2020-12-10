@@ -18,4 +18,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: invalid_user_hash_for_create }
     end
   end
+  
+  test "should login user regardless of email address case" do
+    post sessions_url, params: {
+        email: "EzraShimon@reviewyourlearning.com",
+        password: "testpassword",
+        password_confirmation: "testpassword" } 
+    assert_equal users(:ezraShimon).id, session[:user_id],
+      "Expected ezraShimon.id to equal session[:user_id]"
+  end
 end
