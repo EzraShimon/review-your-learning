@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Learnings</h1>
+<ol>
+<% @learnings.each do |learning| %>
+  <li>
+    <%= link_to learning.description, learning %>
+    <%= link_to 'Edit', edit_learning_path(learning) %>
+    <%= link_to 'Destroy', learning, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+</ol>
+<br>
+
+<%= link_to 'New Learning', new_user_learning_path(@user) %>

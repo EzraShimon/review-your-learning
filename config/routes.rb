@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, shallow: true do
+    resources :learnings
+  end
   resources :sessions
   
-  root to: 'users#new'
+  root to: 'sessions#new'
 end

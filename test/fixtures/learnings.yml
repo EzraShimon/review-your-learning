@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: ezraShimon
+  description: ששת ימי החול ושבת קשורים כגוף ונשמנה
+
+two:
+  user: ezraShimon
+  description: Hillel and Shamai
