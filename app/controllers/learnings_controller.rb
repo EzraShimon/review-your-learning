@@ -5,7 +5,7 @@ class LearningsController < ApplicationController
   # GET /users/1/learnings
   # GET /users/1/learnings.json
   def index
-    @learnings = @user.learnings
+    @learnings = @user.learnings.where.not(id: LearningRelationship.pluck(:child_id))
   end
 
   # GET /learnings/1
@@ -16,6 +16,7 @@ class LearningsController < ApplicationController
   # GET /users/1/learnings/new
   def new
     @learning = @user.learnings.build
+    @parent_id = params[:parent_id]
   end
 
   # GET /learnings/1/edit
@@ -26,6 +27,7 @@ class LearningsController < ApplicationController
   # POST /users/1/learnings.json
   def create
     @learning = @user.learnings.build(learning_params)
+    @learning.parent = Learning.find_by_id(params[:learning][:parent_id])
 
     respond_to do |format|
       if @learning.save

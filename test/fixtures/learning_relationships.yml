@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+שבת:
+  parent: הלכה
+  child: שבת
+
+תפילה:
+  parent: הלכה
+  child: תפילה

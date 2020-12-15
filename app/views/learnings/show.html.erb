@@ -1,14 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @learning.user_id %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @learning.description %>
 </p>
 
+<h1>Learnings</h1>
+<ol>
+<% @learning.children.each do |learning| %>
+  <li>
+    <%= link_to learning.description, learning %>
+    <%= link_to 'Edit', edit_learning_path(learning) %>
+    <%= link_to 'Destroy', learning, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+</ol>
+
+<%= link_to 'New Detail', new_user_learning_path(@learning.user, parent_id: @learning) %>
 <%= link_to 'Edit', edit_learning_path(@learning) %> |
 <%= link_to 'Back', user_learnings_path(@learning.user) %>

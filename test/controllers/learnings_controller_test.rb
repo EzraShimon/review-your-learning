@@ -2,13 +2,15 @@ require 'test_helper'
 
 class LearningsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @learning = learnings(:one)
-    @user = learnings(:one).user
+    @learning = learnings(:הלכה)
+    @user = users(:ezraShimon)
   end
 
-  test "should get index" do
+  test "index should only show root level learnings" do
     get user_learnings_url(@user)
-    assert_response :success
+    assert_match "פניני הלכה", @response.body
+    assert_no_match "הלכות שבת", @response.body
+    assert_no_match "הלכות תפילה", @response.body
   end
 
   test "should get new" do
@@ -16,11 +18,19 @@ class LearningsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create learning" do
+  test "should create root learning" do
     assert_difference('Learning.count') do
       post user_learnings_url(@user), params: { learning: { description: @learning.description, user_id: @learning.user_id } }
     end
 
+    assert_redirected_to learning_url(Learning.last)
+  end
+  
+  test "should create nested learning" do
+    assert_difference('Learning.count') do
+      post user_learnings_url(@user), params: { learning: { description: "הלכות ברכות", user_id: @user }, parent_id: learnings(:הלכה) }
+    end
+    
     assert_redirected_to learning_url(Learning.last)
   end
 

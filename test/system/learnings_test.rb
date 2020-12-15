@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class LearningsTest < ApplicationSystemTestCase
   setup do
-    @learning = learnings(:one)
+    @learning = learnings(:הלכה)
     @user = @learning.user
     visit root_url
     fill_in "Email", with: @user.email
@@ -15,13 +15,23 @@ class LearningsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Learnings"
   end
 
-  test "creating a Learning" do
+  test "creating a root level Learning" do
     visit user_learnings_url(@user)
     click_on "New Learning"
 
     fill_in "Description", with: @learning.description
     click_on "Create Learning"
 
+    assert_text "Learning was successfully created"
+    click_on "Back"
+  end
+  
+  test "creating a nested Learning" do
+    visit user_learnings_url(@user)
+    click_on "פניני הלכה"
+    click_on "New Detail"
+    fill_in "Description", with: "הלכות ברכות"
+    click_on "Create Learning"
     assert_text "Learning was successfully created"
     click_on "Back"
   end
