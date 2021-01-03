@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         email: "EzraShimon@reviewyourlearning.com",
         password: "testpassword",
         password_confirmation: "testpassword" } 
-    assert_equal users(:ezraShimon).id, session[:user_id],
+    assert_equal users(:ezra_shimon).id, session[:user_id],
       "Expected users(:ezraShimon).id to equal session[:user_id]"
   end
 end

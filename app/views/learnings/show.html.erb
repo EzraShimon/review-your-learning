@@ -5,6 +5,11 @@
   <%= @learning.description %>
 </p>
 
+<p>
+  <strong>Learned on:</strong>
+  <%= @learning.learned_on %>
+</p>
+
 <h1>Learnings</h1>
 <ol>
 <% @learning.children.each do |learning| %>

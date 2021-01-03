@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class LearningsTest < ApplicationSystemTestCase
   setup do
-    @learning = learnings(:הלכה)
+    @learning = learnings(:preparations_for_shabbos)
     @user = @learning.user
     visit root_url
     fill_in "Email", with: @user.email
@@ -28,9 +28,9 @@ class LearningsTest < ApplicationSystemTestCase
   
   test "creating a nested Learning" do
     visit user_learnings_url(@user)
-    click_on "פניני הלכה"
+    click_on "Preparations for Shabbos"
     click_on "New Detail"
-    fill_in "Description", with: "הלכות ברכות"
+    fill_in "Description", with: "Man without Faith"
     click_on "Create Learning"
     assert_text "Learning was successfully created"
     click_on "Back"
@@ -40,7 +40,7 @@ class LearningsTest < ApplicationSystemTestCase
     visit user_learnings_url(@user)
     click_on "Edit", match: :first
 
-    fill_in "Description", with: @learning.description
+    fill_in "Learned on", with: "2021-01-05"
     click_on "Update Learning"
 
     assert_text "Learning was successfully updated"

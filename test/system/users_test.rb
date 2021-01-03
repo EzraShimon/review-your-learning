@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:ezraShimon)
+    @user = users(:ezra_shimon)
   end
 
   test "creating a User" do

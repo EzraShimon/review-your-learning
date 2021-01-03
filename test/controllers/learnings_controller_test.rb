@@ -2,15 +2,15 @@ require 'test_helper'
 
 class LearningsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @learning = learnings(:הלכה)
-    @user = users(:ezraShimon)
+    @learning = learnings(:preparations_for_shabbos)
+    @user = users(:ezra_shimon)
   end
 
   test "index should only show root level learnings" do
     get user_learnings_url(@user)
-    assert_match "פניני הלכה", @response.body
-    assert_no_match "הלכות שבת", @response.body
-    assert_no_match "הלכות תפילה", @response.body
+    assert_match "Preparations for Shabbos", @response.body
+    assert_no_match "week connected to Shabbos like body and soul", @response.body
+    assert_no_match "Hillel and Shamai", @response.body
   end
 
   test "should get new" do
@@ -20,7 +20,7 @@ class LearningsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create root learning" do
     assert_difference('Learning.count') do
-      post user_learnings_url(@user), params: { learning: { description: @learning.description, user_id: @learning.user_id } }
+      post user_learnings_url(@user), params: { learning: { user_id: @learning.user_id, description: @learning.description, learned_on: "2021-01-04" } }
     end
 
     assert_redirected_to learning_url(Learning.last)
@@ -28,7 +28,7 @@ class LearningsControllerTest < ActionDispatch::IntegrationTest
   
   test "should create nested learning" do
     assert_difference('Learning.count') do
-      post user_learnings_url(@user), params: { learning: { description: "הלכות ברכות", user_id: @user }, parent_id: learnings(:הלכה) }
+      post user_learnings_url(@user), params: { learning: { description: "Man Without Faith", user_id: @user }, parent_id: learnings(:preparations_for_shabbos) }
     end
     
     assert_redirected_to learning_url(Learning.last)
@@ -36,6 +36,7 @@ class LearningsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show learning" do
     get learning_url(@learning)
+    assert_match(@learning.learned_on.to_s, @response.body)
     assert_response :success
   end
 

@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-שבת:
-  parent: הלכה
-  child: שבת
+week_connected_to_shabbos_like_body_and_soul:
+  parent: preparations_for_shabbos
+  child: week_connected_to_shabbos_like_body_and_soul
 
-תפילה:
-  parent: הלכה
-  child: תפילה
+hillel_and_shamai:
+  parent: preparations_for_shabbos
+  child: hillel_and_shamai

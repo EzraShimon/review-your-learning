@@ -1,13 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-הלכה:
-  user: ezraShimon
-  description: פניני הלכה
+preparations_for_shabbos:
+  user: ezra_shimon
+  description: Preparations for Shabbos
+  learned_on: 04-JAN-2021
 
-שבת:
-  user: ezraShimon
-  description: הלכות שבת
+week_connected_to_shabbos_like_body_and_soul:
+  user: ezra_shimon
+  description: week connected to Shabbos like body and soul
 
-תפילה:
-  user: ezraShimon
-  description: הלכות תפילה
+hillel_and_shamai:
+  user: ezra_shimon
+  description: Hillel and Shamai
