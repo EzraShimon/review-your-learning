@@ -76,6 +76,6 @@ class LearningsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def learning_params
-      params.require(:learning).permit(:description, :learned_on)
+      params.require(:learning).permit(:description, :learned_on, :last_reviewed_on)
     end
 end

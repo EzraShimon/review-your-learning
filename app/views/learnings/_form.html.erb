@@ -24,6 +24,13 @@
     <%= form.label :learned_on %>
     <%= form.date_field :learned_on %>
   </div>
+  
+  <% if learning.learned_on %>
+    <div class="field">
+      <%= form.label :last_reviewed_on %>
+      <%= form.date_field :last_reviewed_on %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
